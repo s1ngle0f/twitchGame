@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from twitchgame.entries import twitch_service
+
+twitch_client = twitch_service.TwitchClient()
 
 def index(request):
+    print(twitch_client.get_top_streamers(count=5, language='ru'))
     return render(request, 'main/index.html')
